@@ -34,7 +34,7 @@ If you are using a version previous to 1.34 please delete the `../Resources/plug
 
 The checklist file is called `clist.txt` and should be put in the aircraft folder which is the same place the `*.acf` file resides.
 
-You may also have a checklist file named `../*aircraftname*/clist.txt` which will be searched for first then it will search for `clist.txt`. The default Cessna would be **Cessna_172SP_clist.txt**. This allows you to have multiple aircraft in one folder like a float and a wheeled version.
+You may also have a checklist file named `../*aircraftname*/clist.txt` which will be searched for first then it will search for `clist.txt`. The default Cessna would be `Cessna_172SP_clist.txt`. This allows you to have multiple aircraft in one folder like a float and a wheeled version.
 
 Also in the archive is a folder called `Xchecklist/Checker` that has test programs for your platform and bitsize.
 
@@ -59,35 +59,25 @@ Michal & Bill
 
 ![](XchecklistSetup.png)
 
-The Xchecklist Setup dialog box will be explained first and can be found by clicking on the Plugins menu item and selecting Xchecklist from the drop down list.
+The Xchecklist Setup dialog box will be explained first and can be found by clicking on the `Plugins` menu item and selecting Xchecklist from the drop down list.
 
-**Translucent Window** when checked makes the checklist translucent.
+* **Translucent Window** when checked makes the checklist translucent. Unchecked the checklist is solid.
 
-Unchecked the checklist is solid.
+* **Show Checklist if Checklist exist** when checked if there is a `clist.txt` for the aircraft loaded it will display the checklist. Unchecked it will not display the checklist.
 
-**Show Checklist if Checklist exist** when checked if there is a clist.txt for the aircraft loaded it will display the checklist.
+* **Turn Copilot On** when checked will automatically check in order items that have data refs in the clist.txt. These items are marked with a `+` sign in front of the check box. Unchecked you have to check each item yourself.
 
-Unchecked it will not display the checklist.
+* **Voice Prompt** when checked will speak a prompt for the upcoming item. Unchecked it is quiet.
 
-**Turn Copilot On** when checked will automatically check in order items that have data refs in the clist.txt. These items are marked with a + sign in front of the check box.
+* **Auto Hide** when checked will automatically hide the checklist after it is complete and a small delay. Unchecked it will not hide.
 
-Unchecked you have to check each item yourself.
+* **Show Widget** when checked shows the older widget checklist.
 
-**Voice Prompt** when checked will speak a prompt for the upcoming item.
+* **Show GUI** when checked shows the new GUI checklist that can be scaled and popped to a second display. It is also the checklist widow type that is used in VR but in VR it has a transparent background.
 
-Unchecked it is quiet.
+* **Move Checklist Window Down** will move the checklist window down so you can grab it with the mouse if it is up under the top menu bar.
 
-**Auto Hide** when checked will automatically hide the checklist after it is complete and a small delay.
-
-Unchecked it will not hide.
-
-**Show Widget** when checked shows the older widget checklist.
-
-**Show GUI** when checked shows the new GUI checklist that can be scaled and popped to a second display. It is also the checklist widow type that is used in VR but in VR it has a transparent background.
-
-**Move Checklist Window Down** will move the checklist window down so you can grab it with the mouse if it is up under the top menu bar.
-
-**Save Settings** will save your settings including the window position of the checklist in a preference file. Before saving the window position it will make sure that what is saved is within the current screen.  As a side benefit if you changed screen resolution and part of the checklist is outside the current screen pressing this button will put it back inside the screen.
+* **Save Settings** will save your settings including the window position of the checklist in a preference file. Before saving the window position it will make sure that what is saved is within the current screen.  As a side benefit if you changed screen resolution and part of the checklist is outside the current screen pressing this button will put it back inside the screen.
 
 # X-Plane 10 Joystick buttons setup
 Joystick buttons are setup using Buttons : Adv pane in the Joystick & Equipment window, that is accessible through Settings / Joystick, Keys & Equipment menu.
@@ -158,7 +148,7 @@ Keystrokes are setup using Settings dialog window which can be accessed through 
 
 After typing bg in the search box you should see the items you can map to Xchecklist.
 
-Now just click on the gray box to the left of the + sign of the item you want to map. When you do this the gray box will turn white and will say "Record keystroke(s)" . Record your keystrokes and the box will turn gray again with your recorded keystrokes in the gray box. You will now also see a + sign and a --  sign.
+Now just click on the gray box to the left of the `+` sign of the item you want to map. When you do this the gray box will turn white and will say `"Record keystroke(s)"` . Record your keystrokes and the box will turn gray again with your recorded keystrokes in the gray box. You will now also see a `+` sign and a `--`  sign.
 
 Repeat those steps and when done, press the done button.
 
@@ -173,7 +163,7 @@ Next item is `hide_checklist` as it says hides the checklist.
 Last item is `reload_checklist` as it says reloads the checklist.
 
 # Checklist files
-When the X-Plane loads a plane, Xchecklist looks to the airplane's directory and tries to load the acf specific checklist first acfName_clist.txt), and if not found, the generic clist.txt is loaded.
+When the X-Plane loads a plane, Xchecklist looks to the airplane's directory and tries to load the acf specific checklist first `acfName_clist.txt`), and if not found, the generic `clist.txt` is loaded.
 
 ## Checklist file structure
 The checklist file contains series of checklists for the given aircraft.
@@ -181,31 +171,16 @@ The checklist file contains series of checklists for the given aircraft.
 Each checklist starts with the `sw_checklist`. This statement specifies the title of the checklist, and optionally the name, under which it appears in the XChecklist's menu (when the optional part is missing, the menu item is not created). This way the entry points of multi-page checklists are accessible via menu, without cluttering the menu with the interim pages.
 
 `sw_checklist:Checklist name`
-
 `sw_checklist:Checklist name:Menu name`
-
 The checklist itself can contain several types of statements:
 
-`sw_item`
-normal checklist item - spoken by copilot, checkable both manually and automaticaly
-
-`sw_iteminfo`
-checklist item, checkable only by fulfilling the condition
-
-`sw_itemvoid`
-noncheckable checklist item; ignored by copilot
-
-`sw_remark`
-remarks spoken by copilot (no condition, non-checkable)
-
-`sw_show`
-when no checklist is displayed and a condition is fulfilled, the checklist pops up
-
-`sw_continue`
-designates which checklist should come next, when the current one finishes
-
-`sw_rcolsize`
-specifies the size of the right column of the checklist
+* `sw_item` normal checklist item - spoken by copilot, checkable both manually and automatically
+* `sw_iteminfo` checklist item, checkable only by fulfilling the condition
+* `sw_itemvoid` non-checkable checklist item; ignored by copilot
+* `sw_remark` remarks spoken by copilot (no condition, non-checkable)
+* `sw_show` when no checklist is displayed and a condition is fulfilled, the checklist pops up
+* `sw_continue` designates which checklist should come next, when the current one finishes
+* `sw_rcolsize` specifies the size of the right column of the checklist
 
 ## sw_item
 
